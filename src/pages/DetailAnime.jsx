@@ -1,4 +1,3 @@
-import "../styles/app.css";
 import { useParams } from "react-router-dom";
 import useStream from "../services/apiStream";
 import menheraChibi from "../assets/gif/menhera-chibi.gif";
