@@ -1,6 +1,4 @@
 import { useState } from "react";
-import "../../styles/app.css";
-
 // icon
 import { FiSearch } from "react-icons/fi";
 import { NavbarLink } from "./NavbarLink";
