@@ -5,7 +5,7 @@ import useFetch from "../services/api";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { useState, useEffect } from "react";
-import { CardAnime } from "../components/cardAnime";
+import { CardAnime } from "../components/CardAnime";
 import Pagination from "../components/Pagination";
 const responsive = {
   desktop: {

@@ -1,5 +1,5 @@
 import useFetch from "../services/api";
-import { CardAnime } from "../components/cardAnime";
+import { CardAnime } from "../components/CardAnime";
 import Pagination from "../components/Pagination";
 import { useSearchParams } from "react-router-dom";
 

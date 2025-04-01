@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { CardAnime } from "../components/cardAnime";
+import { CardAnime } from "../components/CardAnime";
 import { FavoritesContext } from "../context/FavoritesContext";
 
 

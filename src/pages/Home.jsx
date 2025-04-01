@@ -7,7 +7,7 @@ import menheraChibi from "../assets/gif/menhera-chibi.gif";
 
 // component
 import { ContainerJumbotron } from "../components/home/ContainerJumbotron";
-import { CardAnime } from "../components/cardAnime";
+import { CardAnime } from "../components/CardAnime";
 import useFetch from "../services/api";
 
 // Konfigurasi responsive
