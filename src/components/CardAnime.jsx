@@ -19,21 +19,21 @@ export const CardAnime = ({ title, animeId, poster, score, episodes, status, rel
   };
 
   return (
-    <div className="relative md:w-48 w-32 h-38 md:h-65 rounded-lg overflow-hidden">
+    <div className="relative md:w-48 w-40 h-52 md:h-65 rounded-lg overflow-hidden">
       <div className="flex flex-col bg-neutral-900 shadow-2xs hover:shadow-lg focus:outline-hidden focus:shadow-lg transition">
         <img className="object-cover rounded-t-xl" src={poster} alt={title} />
 
-        <span className="absolute flex md:top-3 top-2 justify-between text-[9px] md:text-sm w-full">
+        <span className="absolute flex md:top-3 top-3 justify-between text-[12px] md:text-sm w-full">
           {episodes && (
-            <p className="mt-1 bg-neutral-900/70 flex py-1 items-center md:gap-2 gap-1 md:px-3 px-2 bacdrop-blur-sm">
-              <LuMonitorPlay className="md:text-lg text-xs" /> {episodes}
+            <p className="mt-1 bg-neutral-900/70 flex py-1 items-center md:gap-2 gap-1 md:px-3 px-1 bacdrop-blur-sm">
+              <LuMonitorPlay className="md:text-lg text-sm" /> {episodes}
             </p>
           )}
 
-          {releaseDay && <p className="mt-1 py-1 md:ps-2 ps-1 md:pe-3 pe-2 bg-neutral-900/80 font-semibold bacdrop-blur-sm">{releaseDay}</p>}
-          {status && <p className="mt-1 py-1 md:ps-2 ps-1 md:pe-3 pe-2 bg-neutral-900/80 font-semibold bacdrop-blur-sm">{status}</p>}
+          {releaseDay && <p className="mt-1 py-1 md:ps-2 md:pe-3 px-2 bg-neutral-900/80 font-semibold bacdrop-blur-sm">{releaseDay}</p>}
+          {status && <p className="mt-1 py-1 md:ps-2 ps-1 md:pe-3 pe-1 bg-neutral-900/80 font-semibold bacdrop-blur-sm">{status}</p>}
           {score && (
-            <p className="mt-1 bg-neutral-900/70 flex items-center md:gap-1 gap-1 md:px-3 px-2 bacdrop-blur-sm">
+            <p className="mt-1 bg-neutral-900/70 flex items-center md:gap-1 gap-1 md:px-3 px-1 bacdrop-blur-sm">
               <FaStar className="md:text-sm text-xs text-yellow-300" /> {score}
             </p>
           )}
@@ -44,7 +44,7 @@ export const CardAnime = ({ title, animeId, poster, score, episodes, status, rel
 
         <div className="md:bottom-[-23px] bottom-[-19px] flex w-full items-end hover:bottom-0 duration-200 ese-in-out absolute h-full">
           <Link to={`/detail/${animeId}`} className="bg-gray-900/60 backdrop-blur-xs z-5 w-full md:h-14 h-11 md:px-2 md:py-2 py-1.5 px-1">
-            <h3 className="hover:text-yellow-300 mt-0 md:text-[16px]/5 text-xs/4 font-semibold text-center text-neutral-200 line-clamp-2 text-ellipsis">{title}</h3>
+            <h3 className="hover:text-yellow-300 mt-0 md:text-[16px]/5 text-sm/4 font-semibold text-center text-neutral-200 line-clamp-2 text-ellipsis">{title}</h3>
           </Link>
         </div>
       </div>

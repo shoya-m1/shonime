@@ -9,9 +9,11 @@ export const AnimeInfo = ({ animes, animeId }) => {
       <div className="w-full">
         <h2 className="md:text-2xl text-xl md:text-start text-center font-semibold border-b-1 border-neutral-700 pb-5 ">{formattedTitle}</h2>
         <ul className="flex md:text-base md:justify-start justify-center mt-4 items-center gap-4 border-b-1 border-neutral-700 pb-4 text-sm">
-          <li className="flex items-center gap-2 border-r-1 border-neutral-400 pe-3">
-            <FaStar className="text-yellow-300" /> {animes?.score}
-          </li>
+          {animes?.score && (
+            <li className="flex items-center gap-2 border-r-1 border-neutral-400 pe-3">
+              <FaStar className="text-yellow-300" /> {animes?.score}
+            </li>
+          )}
           <li className="flex items-center gap-2 border-r-1 border-neutral-400 pe-3">{animes?.aired}</li>
           <li className="flex items-center gap-2 "> {animes?.episodes} Episode</li>
         </ul>

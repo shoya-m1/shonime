@@ -52,7 +52,7 @@ const AnimeGenre = () => {
 
   return (
     <main className="pt-26">
-      <section className="lg:m-auto mx-5 py-5 max-w-6xl bg-neutral-900 border border-1 border-neutral-700/60 rounded-xl">
+      <section className="lg:m-auto mx-2 py-5 max-w-6xl bg-neutral-900 border border-1 border-neutral-700/60 rounded-xl">
         <div className="w-full px-2 md:px-6 border-b-1 border-neutral-700 pb-3 md:text-xl">
           <h2 className="font-semibold line-clamp-1 text-elipsis">Search Genre : {id}</h2>
         </div>
@@ -69,8 +69,8 @@ const AnimeGenre = () => {
         <div className={`${selectGenre ? "opacity-100 z-10" : "opacity-0 -z-1"} duration-200 ese-in-out relative`}>
           <ul className="absolute flex flex-wrap mt-5 gap-y-4 bg-neutral-800 py-6 rounded-sm px-3">
             {listDataGenre?.map((genre) => (
-              <button onClick={() => setSelectGenre(!selectGenre)}>
-                <ListGenres key={genre.genreId} {...genre} />
+              <button key={genre.genreId} onClick={() => setSelectGenre(!selectGenre)}>
+                <ListGenres {...genre} />
               </button>
             ))}
           </ul>

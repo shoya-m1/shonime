@@ -13,8 +13,8 @@ const DetailAnime = () => {
 
   return (
     <main className="pt-26 min-h-screen">
-      <div className="lg:m-auto min-h-screen px-5 mx-5 py-5 max-w-6xl bg-neutral-900 border border-1 border-neutral-700/60 rounded-xl">
-        <div className="w-full overflow-hidden m-auto h-12 bg-neutral-700 rounded-md flex justify-center items-center">
+      <div className="lg:m-auto min-h-screen px-3 mx-2 py-5 max-w-6xl bg-neutral-900 border border-1 border-neutral-700/60 rounded-xl">
+        <div className="w-full overflow-hidden m-auto h-10 md:h-12 bg-neutral-700 rounded-md flex justify-center items-center">
           <h1 className="font-bold md:text-xl text-elipsis line-clamp-1">Detail Anime</h1>
         </div>
 
@@ -39,8 +39,9 @@ const DetailAnime = () => {
             </section>
           </>
         )}
+      <div className="h-5"></div>
       </div>
-      <div className="h-30"></div>
+      <div className="h-10"></div>
     </main>
   );
 };

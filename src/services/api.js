@@ -12,7 +12,7 @@ const useFetch = (url) => {
     if (!url) return;
 
     setLoading(true);
-    setError(null); // Reset error sebelum fetch data baru
+    setError(null);
 
     const fetchData = async () => {
       try {
@@ -23,7 +23,7 @@ const useFetch = (url) => {
         setDatas(result);
       } catch (err) {
         setError(err.message);
-        setDatas(null); // Reset data jika terjadi error
+        setDatas(null);
       } finally {
         setLoading(false);
       }

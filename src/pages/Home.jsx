@@ -19,11 +19,10 @@ const resJumbotron = {
 const resMovie = {
   desktop: { breakpoint: { max: 4000, min: 1179 }, items: 5, partialVisibilityGutter: 0 },
   tablet: { breakpoint: { max: 1179, min: 895 }, items: 4, partialVisibilityGutter: 0 },
-  mobile: { breakpoint: { max: 895, min: 768 }, items: 3, partialVisibilityGutter: 0 },
-  tabletmd: { breakpoint: { max: 768, min: 575 }, items: 4, partialVisibilityGutter: 0 },
-  hpsm: { breakpoint: { max: 575, min: 447 }, items: 3, partialVisibilityGutter: 0 },
-  hpxs: { breakpoint: { max: 447, min: 0 }, items: 2, partialVisibilityGutter: 55 },
-  hp: { breakpoint: { max: 407, min: 0 }, items: 2, partialVisibilityGutter: 20 },
+  mobile: { breakpoint: { max: 895, min: 575 }, items: 3, partialVisibilityGutter: 0 },
+  hpsm: { breakpoint: { max: 575, min: 447 }, items: 2, partialVisibilityGutter: 0 },
+  hpxs: { breakpoint: { max: 447, min: 412 }, items: 2, partialVisibilityGutter: 10 },
+  hp: { breakpoint: { max: 412, min: 0 }, items: 1, partialVisibilityGutter: 10 },
 };
 
 // Komponen custom dot

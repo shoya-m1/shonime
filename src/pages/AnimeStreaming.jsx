@@ -25,6 +25,7 @@ export const AnimeStreaming = () => {
   useEffect(() => {
     setResolution("");
   }, [id]);
+
   useEffect(() => {
     if (episodes?.server?.[firstIdResolution]) {
       setResolution(episodes.server[firstIdResolution].serverId);
@@ -33,7 +34,7 @@ export const AnimeStreaming = () => {
 
   return (
     <main className="pt-26">
-      <div className="lg:m-auto overflow-hidden px-5 mx-5 py-5 max-w-6xl bg-neutral-900 border border-1 border-neutral-700/60 rounded-xl">
+      <div className="lg:m-auto overflow-hidden px-2 mx-2 py-5 max-w-6xl bg-neutral-900 border border-1 border-neutral-700/60 rounded-xl">
         {loading && loadingDatas ? (
           <span className="w-full pb-20 mr-30 min-h-screen flex justify-center items-center">
             <img className="w-50" src={menheraChibi} alt="gif" />
@@ -92,7 +93,6 @@ export const AnimeStreaming = () => {
                 </div>
               </div>
             </section>
-
             <section className="mt-5">
               {loading ? (
                 <span className="w-full h-50 pb-5 md:pb-20 pr-10 md:pr-20 md:h-120 flex justify-center items-center">
@@ -102,7 +102,7 @@ export const AnimeStreaming = () => {
                 <ContainerStreaming resolution={resolution} defaultStreaming={defaultStreaming} />
               )}
             </section>
-            <section className="mt-10">
+            <section className="mt-5">
               <h2 className="md:text-2xl text-lg font-semibold">All Episode</h2>
               <div className="relative">
                 <div
@@ -117,7 +117,7 @@ export const AnimeStreaming = () => {
                 <ul
                   className={`${
                     selectEpisode ? "opacity-100 z-1" : "opacity-0 -z-1"
-                  } duration-200 ese-in-out justify-center flex flex-wrap items-center overflow-x-hidden rounded-b-sm gap-x-5 absolute w-full bg-neutral-800 mt-3 pt-4 max-h-150 `}
+                  } duration-200 px-3 ese-in-out justify-center flex flex-wrap items-center overflow-x-hidden rounded-b-sm gap-x-5 absolute w-full bg-neutral-800 mt-3 pt-4 max-h-150 `}
                 >
                   {datas?.data?.episodeList.map((eps, i) => {
                     return (
@@ -126,7 +126,7 @@ export const AnimeStreaming = () => {
                           setSelectEpisode(!selectEpisode);
                         }}
                         key={i}
-                        className=""
+                        className="w-full sm:w-[45%]"
                       >
                         <ListEpisode {...eps} animeId={animeId} id={i} />
                       </li>
@@ -135,7 +135,7 @@ export const AnimeStreaming = () => {
                 </ul>
               </div>
             </section>
-            <section className="mt-7">
+            <section className="mt-5">
               <h2 className="font-semibold md:text-2xl text-lg">
                 Download <span className="text-yellow-300">Anime</span>
               </h2>
@@ -143,9 +143,9 @@ export const AnimeStreaming = () => {
             </section>
           </>
         )}
-        <div className="h-10"></div>
+        <div className="h-5"></div>
       </div>
-      <div className="h-20"></div>
+      <div className="h-10"></div>
     </main>
   );
 };

@@ -8,7 +8,7 @@ export const ListEpisode = ({ id, episodeId, animeId, episode }) => {
           <p>{id + 1}</p>
         </div>
         <div className="flex items-center hover:text-yellow-500 w-full">
-          <p className="font-semibold line-clamp-1 text-elipsis">{episode}</p>
+          <p className="font-semibold sm:text-base line-clamp-2 text-elipsis">{episode}</p>
         </div>
       </div>
     </Link>

@@ -11,7 +11,7 @@ const Pagination = ({ pagination }) => {
   };
 
   return (
-    <div className="flex items-center gap-2 mt-5 justify-center">
+    <div className="flex flex-wrap items-center gap-2 mt-5 justify-center">
       <button onClick={() => goToPage(prevPage)} disabled={!hasPrevPage} className={`px-4 py-2  rounded-sm text-white ${hasPrevPage ? "cursor-pointer bg-yellow-500" : "bg-neutral-900 cursor-not-allowed border border-neutral-600"}`}>
         Prev
       </button>

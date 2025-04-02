@@ -10,9 +10,9 @@ const Navbar = () => {
   const [isChecked, setIsChecked] = useState(false);
 
   return (
-    <header className="px-2 fixed top-0 inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full text-sm">
-      <nav className="mt-4 md:mx-5 py-2 md:py-0 relative max-w-6xl w-full border border-gray-200 rounded-2xl md:rounded-full mx-2 md:flex md:items-center md:justify-between md:mx-auto bg-neutral-900 border-neutral-700">
-        <div className="px-4 flex justify-between items-center">
+    <header className="fixed top-0 inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full text-sm">
+      <nav className="mt-4 md:mx-5 py-2 md:py-0 relative max-w-6xl w-full border border-gray-200 rounded-xl md:rounded-full mx-2 md:flex md:items-center md:justify-between md:mx-auto bg-neutral-900 border-neutral-700">
+        <div className="px-3 flex justify-between items-center">
           <div className="md:hidden">
             <button type="button" className="">
               <label className="hamburger">
