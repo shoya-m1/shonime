@@ -1,4 +1,5 @@
 import useFetch from "../../services/api";
+import { LuMonitorPlay } from "react-icons/lu";
 
 export const ContainerStreaming = ({ resolution, defaultStreaming }) => {
   let urlStream = defaultStreaming;
@@ -9,8 +10,8 @@ export const ContainerStreaming = ({ resolution, defaultStreaming }) => {
   }
 
   return (
-    <div className="video-container">
-      <iframe className="w-full h-[210px] sm:h-[320px] md:h-[400px] lg:h-[540px]" src={urlStream} frameBorder="0" allowFullScreen title="Embedded Video"></iframe>
+    <div className="video-container w-full h-[210px] sm:h-[320px] md:h-[400px] lg:h-[540px]">
+      <iframe className="h-full w-full" src={urlStream} frameBorder="0" allowFullScreen title="Embedded Video"></iframe>
     </div>
   );
 };

@@ -102,7 +102,7 @@ export const AnimeStreaming = () => {
                 <ContainerStreaming resolution={resolution} defaultStreaming={defaultStreaming} />
               )}
             </section>
-            <section className="mt-5">
+            <section className="mt-3">
               <h2 className="md:text-2xl text-lg font-semibold">All Episode</h2>
               <div className="relative">
                 <div
@@ -119,7 +119,7 @@ export const AnimeStreaming = () => {
                     selectEpisode ? "opacity-100 z-1" : "opacity-0 -z-1"
                   } duration-200 px-3 ese-in-out justify-center flex flex-wrap items-center overflow-x-hidden rounded-b-sm gap-x-5 absolute w-full bg-neutral-800 mt-3 pt-4 max-h-150 `}
                 >
-                  {datas?.data?.episodeList.map((eps, i) => {
+                  {datas?.data?.episodeList.slice().reverse().map((eps, i) => {
                     return (
                       <li
                         onClick={() => {
@@ -128,7 +128,7 @@ export const AnimeStreaming = () => {
                         key={i}
                         className="w-full sm:w-[45%]"
                       >
-                        <ListEpisode {...eps} animeId={animeId} id={i} />
+                        <ListEpisode {...eps} animeId={animeId} id={i} activeId={id} />
                       </li>
                     );
                   })}
