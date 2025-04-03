@@ -52,7 +52,7 @@ const AnimeGenre = () => {
 
   return (
     <main className="pt-26">
-      <section className="lg:m-auto min-h-screen mx-2 py-5 max-w-6xl bg-neutral-900 border border-1 border-neutral-700/60 rounded-xl">
+      <section className="lg:m-auto mx-2 py-5 max-w-6xl bg-neutral-900 border border-1 border-neutral-700/60 rounded-xl">
         <div className="w-full px-2 md:px-6 border-b-1 border-neutral-700 pb-3 md:text-xl">
           <h2 className="font-semibold line-clamp-1 text-elipsis">Search Genre : {id}</h2>
         </div>
@@ -75,10 +75,10 @@ const AnimeGenre = () => {
             ))}
           </ul>
         </div>
-        <div className="flex flex-wrap gap-2 justify-center mt-5">{animes?.length > 0 ? animes.map((anime, i) => <CardAnime key={i} {...anime} />) : <p className="text-neutral-200"> Data tidak ditemukan</p>}</div>
+        <div className="flex flex-wrap gap-2 justify-center mt-5">{animes?.length > 0 ? animes.map((anime, i) => <CardAnime key={i} {...anime} />) : <p className="text-neutral-200"></p>}</div>
 
         <Pagination pagination={pagination} />
-     
+
         <div className="h-30"></div>
       </section>
       <div className="h-30"></div>

@@ -117,7 +117,7 @@ export const AnimeStreaming = () => {
                 <ul
                   className={`${
                     selectEpisode ? "opacity-100 z-1" : "opacity-0 -z-1"
-                  } duration-200 px-3 ese-in-out justify-center flex flex-wrap items-center overflow-x-hidden rounded-b-sm gap-x-5 absolute w-full bg-neutral-800 mt-3 pt-4 max-h-150 `}
+                  } duration-200 px-3 ese-in-out justify-center flex flex-wrap items-center overflow-x-hidden rounded-b-sm gap-x-5 absolute w-full bg-neutral-800 mt-3 pt-4 max-h-100 `}
                 >
                   {datas?.data?.episodeList.slice().reverse().map((eps, i) => {
                     return (
