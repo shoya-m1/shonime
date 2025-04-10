@@ -7,7 +7,7 @@ import { ListEpisode } from "../components/detailAnime/ListEpisode";
 
 const DetailAnime = () => {
   const { id } = useParams();
-  const { animes, loading, error } = useStream(`/anime/?q=${id}`);
+  const { animes, loading, error } = useStream(`/anime/${id}`);
   const animeData = animes?.data || [];
   const paragraf = animeData?.synopsis || "";
 
@@ -24,11 +24,11 @@ const DetailAnime = () => {
           </span>
         ) : (
           <>
-            <AnimeInfo animes={animeData} animeId={id} />
+            <AnimeInfo animes={animeData}/>
             <ContainerSynopsis paragraf={paragraf} />
             <section className="mt-5">
               <h2 className="font-semibold md:text-2xl text-lg mb-2">Daftar Episode</h2>
-              <ol className="flex flex-wrap max-h-150 overflow-y-scroll overflow-hidden justify-between mt-6">
+              <ol className="flex flex-wrap max-h-150 overflow-y-scroll overflow-hidden gap-2 mt-6">
                 {animeData?.episodeList
                   ?.slice()
                   .reverse()
@@ -39,7 +39,7 @@ const DetailAnime = () => {
             </section>
           </>
         )}
-      <div className="h-5"></div>
+        <div className="h-5"></div>
       </div>
       <div className="h-10"></div>
     </main>

@@ -1,7 +1,7 @@
 // src/hooks/useFetch.js
 import { useState, useEffect } from "react";
 
-const BASE_URL = "https://api-data-anime.vercel.app";
+const BASE_URL = "https://api-anime-production-4858.up.railway.app/otakudesu";
 
 const useStream = (endpoint) => {
   const [animes, setAnimes] = useState(null);

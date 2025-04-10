@@ -23,7 +23,7 @@ export const TableDownload = ({ downloads }) => {
                   (data, i) =>
                     data.urls.length > 0 && (
                       <tr key={i}>
-                        <td className="px-2 py-4 whitespace-nowrap text-sm font-medium text-neutral-300">{data.qualities}</td>
+                        <td className="px-2 py-4 whitespace-nowrap text-sm font-medium text-neutral-300">{data.title}</td>
                         <td className="px-2 py-4 text-sm text-neutral-300-800">{data.size}</td>
                         <td key={i} className="px-1 flex flex-wrap gap-3 py-4 whitespace-nowrap text-sm text-neutral-300">
                           {data.urls.map((e, i) => (

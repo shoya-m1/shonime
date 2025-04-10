@@ -1,13 +1,13 @@
 import { FaStar } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
-export const AnimeInfo = ({ animes, animeId }) => {
-  const formattedTitle = animeId.replaceAll("-", " ");
+export const AnimeInfo = ({ animes }) => {
+  // const formattedTitle = animeId.replaceAll("-", " ");
   return (
     <section className="mt-5 flex md:flex-row flex-col items-center md:gap-10 gap-5">
       <img className="max-h-82 md:w-xs sm:w-62 w-44 rounded-sm" src={animes?.poster} alt="img-animes" />
       <div className="w-full">
-        <h2 className="md:text-2xl text-xl md:text-start text-center font-semibold border-b-1 border-neutral-700 pb-5 ">{formattedTitle}</h2>
+        <h2 className="md:text-2xl text-xl md:text-start text-center font-semibold border-b-1 border-neutral-700 pb-5 ">{animes?.title}</h2>
         <ul className="flex md:text-base md:justify-start justify-center mt-4 items-center gap-4 border-b-1 border-neutral-700 pb-4 text-sm">
           {animes?.score && (
             <li className="flex items-center gap-2 border-r-1 border-neutral-400 pe-3">
@@ -36,7 +36,7 @@ export const AnimeInfo = ({ animes, animeId }) => {
               :
               {animes?.genreList?.map((genre, i) => (
                 <Link to={`/genre/${genre?.genreId}`} className="border px-3 py-1 border-neutral-700 hover:bg-yellow-500 hover:text-neutral-100" key={i}>
-                  {genre?.genre}
+                  {genre?.title}
                 </Link>
               ))}
             </li>

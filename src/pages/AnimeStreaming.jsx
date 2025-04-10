@@ -1,4 +1,4 @@
-import { useParams, Link, useSearchParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import menheraChibi from "../assets/gif/menhera-chibi.gif";
 import menheraEat from "../assets/gif/menhera-eating.gif";
 import useStream from "../services/apiStream";
@@ -10,11 +10,9 @@ import { ContainerStreaming } from "../components/animeStreaming/ContainerStream
 
 export const AnimeStreaming = () => {
   const { id } = useParams();
-  const [searchParams] = useSearchParams();
-  const animeId = searchParams.get("Id");
-  const { animes, loading, error } = useStream(`/episode/?q=${id}`);
-  const { animes: datas, loading: loadingDatas } = useStream(`/anime/?q=${animeId}`);
+  const { animes, loading, error } = useStream(`/episode/${id}`);
   const episodes = animes?.data || [];
+  const { animes: datas, loading: loadingDatas } = useStream(`/anime/${episodes?.animeId}`);
 
   const [selectEpisode, setSelectEpisode] = useState(false);
   const [selectResolution, setSelectResolution] = useState(true);
@@ -27,8 +25,8 @@ export const AnimeStreaming = () => {
   }, [id]);
 
   useEffect(() => {
-    if (episodes?.server?.[firstIdResolution]) {
-      setResolution(episodes.server[firstIdResolution].serverId);
+    if (episodes?.qualities?.serverList?.[firstIdResolution]) {
+      setResolution(episodes.qualities?.serverList[firstIdResolution].serverId);
     }
   }, [episodes]);
 
@@ -46,7 +44,7 @@ export const AnimeStreaming = () => {
             </div>
             <section className="relative mt-5 ">
               <div className="rounded-sm bg-neutral-800 w-full h-8 md:h-11 flex items-center justify-around">
-                <Link to={`/episode/${episodes?.prevEpisodeId}?Id=${animeId}`} className={`md:text-3xl text-xl w-[30%] flex justify-center h-full items-center ${!episodes?.hasPrevEpisode ? "pointer-events-none opacity-50" : ""}`}>
+                <Link to={`/episode/${episodes?.prevEpisode?.episodeId}`} className={`md:text-3xl text-xl w-[30%] flex justify-center h-full items-center ${!episodes?.hasPrevEpisode ? "pointer-events-none opacity-50" : ""}`}>
                   <IoIosArrowBack />
                 </Link>
 
@@ -56,10 +54,7 @@ export const AnimeStreaming = () => {
                 >
                   Show Resolution
                 </button>
-                <Link
-                  to={`/episode/${episodes?.nextEpisodeId}?Id=${animeId}`}
-                  className={`md:text-3xl text-xl w-[30%] flex rotate-180 justify-center h-full items-center ${!episodes?.hasNextEpisode ? "pointer-events-none opacity-50" : ""}`}
-                >
+                <Link to={`/episode/${episodes?.nextEpisode?.episodeId}`} className={`md:text-3xl text-xl w-[30%] flex rotate-180 justify-center h-full items-center ${!episodes?.hasNextEpisode ? "pointer-events-none opacity-50" : ""}`}>
                   <IoIosArrowBack />
                 </Link>
               </div>
@@ -67,13 +62,13 @@ export const AnimeStreaming = () => {
               <div className={` ${selectResolution ? `opacity-0 -z-1` : "opacity-100 z-5"} duration-300 ese-in-out relative mt-3`}>
                 <div className="absolute rounded-b-lg z-5 w-full h-auto bg-neutral-800 p-5">
                   <ul className="flex gap-3 justify-start flex-wrap">
-                    {episodes?.server?.map((resolusi, i) => {
+                    {episodes?.server?.qualities?.map((resolusi, i) => {
                       if (resolusi.serverId === "default") return null;
-                      return (
+                      return resolusi.serverList.map((list, i) => (
                         <li
                           onClick={() => {
                             setIdResolution(i);
-                            setResolution(resolusi.serverId);
+                            setResolution(list.serverId);
                             setSelectResolution(!selectResolution);
                           }}
                           key={i}
@@ -81,13 +76,15 @@ export const AnimeStreaming = () => {
                         >
                           <p
                             className={`${
-                              resolution == resolusi.serverId ? "bg-yellow-500" : "bg-neutral-700"
+                              resolution == list.serverId ? "bg-yellow-500" : "bg-neutral-700"
                             } sm:text-base text-sm h-8 px-5 cursor-pointer duration-300 ease-in-out hover:bg-yellow-400 flex items-center justify-center line-clamp-1 text-elipsis`}
                           >
-                            {resolusi.serverTitle}
+                            {list.title}
+                            <> </>
+                            {resolusi.title}
                           </p>
                         </li>
-                      );
+                      ));
                     })}
                   </ul>
                 </div>
@@ -119,19 +116,22 @@ export const AnimeStreaming = () => {
                     selectEpisode ? "opacity-100 z-1" : "opacity-0 -z-1"
                   } duration-200 px-3 ese-in-out justify-center flex flex-wrap items-center overflow-x-hidden rounded-b-sm gap-x-5 absolute w-full bg-neutral-800 mt-3 pt-4 max-h-100 `}
                 >
-                  {datas?.data?.episodeList.slice().reverse().map((eps, i) => {
-                    return (
-                      <li
-                        onClick={() => {
-                          setSelectEpisode(!selectEpisode);
-                        }}
-                        key={i}
-                        className="w-full sm:w-[45%]"
-                      >
-                        <ListEpisode {...eps} animeId={animeId} id={i} activeId={id} />
-                      </li>
-                    );
-                  })}
+                  {datas?.data?.episodeList
+                    .slice()
+                    .reverse()
+                    .map((eps, i) => {
+                      return (
+                        <li
+                          onClick={() => {
+                            setSelectEpisode(!selectEpisode);
+                          }}
+                          key={i}
+                          className="w-full sm:w-[45%]"
+                        >
+                          <ListEpisode {...eps} id={i} activeId={id} />
+                        </li>
+                      );
+                    })}
                 </ul>
               </div>
             </section>
@@ -139,7 +139,7 @@ export const AnimeStreaming = () => {
               <h2 className="font-semibold md:text-2xl text-lg">
                 Download <span className="text-yellow-300">Anime</span>
               </h2>
-              <TableDownload downloads={episodes?.downloadUrl} />
+              <TableDownload downloads={episodes?.downloadUrl?.qualities} />
             </section>
           </>
         )}
