@@ -17,7 +17,9 @@ export const AnimeStreaming = () => {
   const [selectEpisode, setSelectEpisode] = useState(false);
   const [selectResolution, setSelectResolution] = useState(true);
   const [resolution, setResolution] = useState("");
-  const [firstIdResolution, setIdResolution] = useState("");
+  const [firstIdResolution, setIdResolution] = useState(null);
+  const [selectedServerIndex, setSelectedServerIndex] = useState(null);
+
   let defaultStreaming = episodes?.defaultStreamingUrl;
 
   useEffect(() => {
@@ -25,8 +27,8 @@ export const AnimeStreaming = () => {
   }, [id]);
 
   useEffect(() => {
-    if (episodes?.qualities?.serverList?.[firstIdResolution]) {
-      setResolution(episodes.qualities?.serverList[firstIdResolution].serverId);
+    if (selectedServerIndex && firstIdResolution) {
+      setResolution(episodes.server.qualities[selectedServerIndex].serverList[firstIdResolution].serverId);
     }
   }, [episodes]);
 
@@ -64,14 +66,15 @@ export const AnimeStreaming = () => {
                   <ul className="flex gap-3 justify-start flex-wrap">
                     {episodes?.server?.qualities?.map((resolusi, i) => {
                       if (resolusi.serverId === "default") return null;
-                      return resolusi.serverList.map((list, i) => (
+                      return resolusi.serverList.map((list, iRes) => (
                         <li
                           onClick={() => {
-                            setIdResolution(i);
+                            setIdResolution(iRes);
+                            setSelectedServerIndex(i);
                             setResolution(list.serverId);
                             setSelectResolution(!selectResolution);
                           }}
-                          key={i}
+                          key={`${i}-${iRes}`}
                           className="w-full sm:w-60 md:w-auto font-semibold"
                         >
                           <p
@@ -80,7 +83,7 @@ export const AnimeStreaming = () => {
                             } sm:text-base text-sm h-8 px-5 cursor-pointer duration-300 ease-in-out hover:bg-yellow-400 flex items-center justify-center line-clamp-1 text-elipsis`}
                           >
                             {list.title}
-                            <> </>
+                            <span> </span>
                             {resolusi.title}
                           </p>
                         </li>

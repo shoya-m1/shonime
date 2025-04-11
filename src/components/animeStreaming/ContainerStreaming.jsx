@@ -1,13 +1,9 @@
 import useFetch from "../../services/api";
-import { LuMonitorPlay } from "react-icons/lu";
 
 export const ContainerStreaming = ({ resolution, defaultStreaming }) => {
-  let urlStream = defaultStreaming;
+  const { datas, loading, error } = useFetch(resolution !== "" ? `/server/${resolution}` : null);
 
-  if (resolution !== "") {
-    const { datas, loading, error } = useFetch(`/server/${resolution}`);
-    urlStream = datas?.data?.url;
-  }
+  const urlStream = resolution !== "" && datas?.data?.url ? datas?.data?.url : defaultStreaming;
 
   return (
     <div className="video-container w-full h-[210px] sm:h-[320px] md:h-[400px] lg:h-[540px]">
