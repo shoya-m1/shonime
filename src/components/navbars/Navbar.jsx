@@ -56,7 +56,7 @@ const Navbar = () => {
               <a href="https://shoyanime.vercel.app/" className="border-b-1 border-neutral-700 w-full text-center py-1">
                 Otakudesu
               </a>
-              <a href="" className="text-yellow-300 py-1">
+              <a href="https://shonime.vercel.app/" className="text-yellow-300 py-1">
                 Samehadaku
               </a>
             </div>
