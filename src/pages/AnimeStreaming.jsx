@@ -1,18 +1,18 @@
 import { useParams, Link } from "react-router-dom";
 import menheraChibi from "../assets/gif/menhera-chibi.gif";
 import menheraEat from "../assets/gif/menhera-eating.gif";
-import useStream from "../services/apiStream";
 import { IoIosArrowBack } from "react-icons/io";
 import { useState, useEffect } from "react";
 import { TableDownload } from "../components/animeStreaming/TableDownload";
 import { ListEpisode } from "../components/detailAnime/ListEpisode";
 import { ContainerStreaming } from "../components/animeStreaming/ContainerStreaming";
+import useFetch from "../services/api";
 
 export const AnimeStreaming = () => {
   const { id } = useParams();
-  const { animes, loading, error } = useStream(`/episode/${id}`);
-  const episodes = animes?.data || [];
-  const { animes: datas, loading: loadingDatas } = useStream(`/anime/${episodes?.animeId}`);
+  const { datas, loading, error } = useFetch(`/episode/${id}`);
+  const episodes = datas?.data || [];
+  const { datas: animes, loading: loadingDatas } = useFetch(`/anime/${episodes?.animeId}`);
 
   const [selectEpisode, setSelectEpisode] = useState(false);
   const [selectResolution, setSelectResolution] = useState(true);
@@ -28,7 +28,7 @@ export const AnimeStreaming = () => {
 
   useEffect(() => {
     if (selectedServerIndex && firstIdResolution) {
-      setResolution(episodes.server.qualities[selectedServerIndex].serverList[firstIdResolution].serverId);
+      setResolution(episodes?.server?.qualities[selectedServerIndex]?.serverList[firstIdResolution]?.serverId);
     }
   }, [episodes]);
 
@@ -83,8 +83,6 @@ export const AnimeStreaming = () => {
                             } sm:text-base text-sm h-8 px-5 cursor-pointer duration-300 ease-in-out hover:bg-yellow-400 flex items-center justify-center line-clamp-1 text-elipsis`}
                           >
                             {list.title}
-                            <span> </span>
-                            {resolusi.title}
                           </p>
                         </li>
                       ));
@@ -119,8 +117,8 @@ export const AnimeStreaming = () => {
                     selectEpisode ? "opacity-100 z-1" : "opacity-0 -z-1"
                   } duration-200 px-3 ese-in-out justify-center flex flex-wrap items-center overflow-x-hidden rounded-b-sm gap-x-5 absolute w-full bg-neutral-800 mt-3 pt-4 max-h-100 `}
                 >
-                  {datas?.data?.episodeList
-                    .slice()
+                  {animes?.data?.episodeList
+                    ?.slice()
                     .reverse()
                     .map((eps, i) => {
                       return (
@@ -142,7 +140,8 @@ export const AnimeStreaming = () => {
               <h2 className="font-semibold md:text-2xl text-lg">
                 Download <span className="text-yellow-300">Anime</span>
               </h2>
-              <TableDownload downloads={episodes?.downloadUrl?.qualities} />
+              <p className="text-sm md:text-base mt-3">Password RAR = "Samehadaku.care"</p>
+              <TableDownload downloads={episodes?.downloadUrl?.formats} />
             </section>
           </>
         )}

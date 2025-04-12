@@ -3,6 +3,8 @@ import "react-multi-carousel/lib/styles.css";
 import { dataJumbotron } from "../utils/dataJumbotron";
 import { Link } from "react-router-dom";
 import menheraChibi from "../assets/gif/menhera-chibi.gif";
+import { CardNewAnime } from "../components/home/CardNewAnime";
+import { CardAnimeBatch } from "../components/home/CardAnimeBatch";
 
 // component
 import { ContainerJumbotron } from "../components/home/ContainerJumbotron";
@@ -49,7 +51,7 @@ const Home = () => {
             </Carousel>
           </section>
           <section className="mt-5 mx-3 md:mx-10">
-            <div className="flex justify-between md:mb-10 mb-5 mx-3 md:mx-15 items-center">
+            <div className="flex justify-between md:mb-8 mb-3 mx-3 md:mx-15 items-center">
               <h2 className="md:text-2xl text-xl font-semibold">
                 Anime <span className="text-yellow-300">Ongoing</span>
               </h2>
@@ -58,25 +60,25 @@ const Home = () => {
               </Link>
             </div>
 
-            <div className="flex flex-wrap justify-center gap-3">
-              {datas?.data?.ongoing?.animeList.map((anime, i) => (
-                <CardAnime key={i} {...anime} />
+            <div className="flex flex-wrap justify-center gap-2">
+              {datas?.data?.recent?.animeList.map((anime, i) => (
+                <CardNewAnime key={i} {...anime} />
               ))}
             </div>
           </section>
           <section className="mt-8 mx-3 md:mx-10">
-            <div className="flex justify-between md:mb-10 mb-5 mx-3 md:mx-15 items-center">
+            <div className="flex justify-between md:mb-7 mb-3 mx-3 md:mx-15 items-center">
               <h2 className="md:text-2xl text-xl font-semibold">
-                Anime <span className="text-yellow-300">Complated</span>
+                Anime <span className="text-yellow-300">Movie</span>
               </h2>
               <Link to="/completed" className="hover:text-yellow-300 pt-2 text-sm md:text-[16px]" href="">
                 Lihat Semua
               </Link>
             </div>
             <Carousel className="lg:mx-14 mx-3" arrows={false} partialVisible centerMode={false} draggable focusOnSelect={false} infinite keyBoardControl minimumTouchDrag={80} responsive={resMovie} swipeable>
-              {datas?.data?.completed?.animeList ? (
-                datas?.data?.completed?.animeList.map((anime) => (
-                  <div key={anime.animeId} className="">
+              {datas?.data?.movie?.animeList ? (
+                datas?.data?.movie?.animeList.map((anime) => (
+                  <div key={anime.animeId}>
                     <CardAnime {...anime} />
                   </div>
                 ))
@@ -84,6 +86,21 @@ const Home = () => {
                 <div className="text-neutral-200">Notting data</div>
               )}
             </Carousel>
+          </section>
+          <section className="mt-8 mx-3 md:mx-10">
+            <div className="flex justify-between  mb-5 mx-3 md:mx-15 items-center">
+              <h2 className="md:text-2xl text-xl font-semibold">
+                Anime <span className="text-yellow-300">Batch</span>
+              </h2>
+              <Link to="/batch" className="hover:text-yellow-300 pt-2 text-sm md:text-[16px]">
+                Lihat Semua
+              </Link>
+            </div>
+            <div className="flex md:ms-13 mx-3 flex-wrap justify-start gap-5">
+              {datas?.data?.batch?.batchList.map((anime, i) => (
+                <CardAnimeBatch key={i} {...anime} />
+              ))}
+            </div>
           </section>
           <div className="h-20"></div>
         </main>

@@ -4,7 +4,7 @@ import { LuMonitorPlay } from "react-icons/lu";
 import { FaStar, FaHeart, FaRegHeart } from "react-icons/fa";
 import { FavoritesContext } from "../context/FavoritesContext";
 
-export const CardAnime = ({ title, animeId, poster, score, episodes, status, releaseDay }) => {
+export const CardAnime = ({ title, animeId, poster, score, episodes, status, releaseDay, batchId, releaseDate, estimation }) => {
   const { favoriteAnimes, toggleFavorite } = useContext(FavoritesContext);
   const [isFavorite, setIsFavorite] = useState(false);
 
@@ -31,9 +31,11 @@ export const CardAnime = ({ title, animeId, poster, score, episodes, status, rel
           )}
 
           {releaseDay && <p className="mt-1 py-1 md:ps-2 md:pe-3 px-2 bg-neutral-900/80 font-semibold bacdrop-blur-sm">{releaseDay}</p>}
+          {releaseDate && <p className="mt-1 py-1 md:ps-2 md:pe-3 px-2 bg-neutral-900/80 font-semibold bacdrop-blur-sm">{releaseDate}</p>}
+          {estimation && <p className="mt-1 py-1 md:ps-2 md:pe-3 px-2 bg-neutral-900/80 font-semibold bacdrop-blur-sm">{estimation}</p>}
           {status && <p className="mt-1 py-1 md:ps-2 ps-1 md:pe-3 pe-1 bg-neutral-900/80 font-semibold bacdrop-blur-sm">{status}</p>}
           {score && (
-            <p className="mt-1 bg-neutral-900/70 flex items-center md:gap-1 gap-1 md:px-3 px-1 bacdrop-blur-sm">
+            <p className="mt-1 bg-neutral-900/70 py-1 flex items-center md:gap-1 gap-1 md:px-3 px-1 bacdrop-blur-sm">
               <FaStar className="md:text-sm text-xs text-yellow-300" /> {score}
             </p>
           )}
@@ -43,7 +45,7 @@ export const CardAnime = ({ title, animeId, poster, score, episodes, status, rel
         </button>
 
         <div className="md:bottom-[-23px] bottom-[-19px] flex w-full items-end hover:bottom-0 duration-200 ese-in-out absolute h-full">
-          <Link to={`/detail/${animeId}`} className="bg-gray-900/60 backdrop-blur-xs z-5 w-full md:h-14 h-11 md:px-2 md:py-2 py-1.5 px-1">
+          <Link to={animeId ? `/detail/${animeId}` : `/batch/${batchId}`} className="bg-gray-900/60 backdrop-blur-xs z-5 w-full md:h-14 h-11 md:px-2 md:py-2 py-1.5 px-1">
             <h3 className="hover:text-yellow-300 mt-0 md:text-[16px]/5 text-sm/4 font-semibold text-center text-neutral-200 line-clamp-2 text-ellipsis">{title}</h3>
           </Link>
         </div>

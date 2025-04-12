@@ -1,7 +1,7 @@
 // src/hooks/useFetch.js
 import { useState, useEffect } from "react";
 
-const BASE_URL = "https://wajik-anime-api.vercel.app/otakudesu";
+const BASE_URL = "https://api-anime-one.vercel.app/samehadaku";
 
 const useFetch = (url) => {
   const [datas, setDatas] = useState(null);

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export const ListEpisode = ({ id, episodeId, activeId, time, title }) => {
+export const ListEpisode = ({ id, episodeId, activeId, releaseDate, title }) => {
   return (
     <Link to={`/episode/${episodeId}`}>
       <div className="lg:w-lg hover:bg-neutral-800 rounded-sm duration-200 ese-in-out flex gap-3 mb-4 pb-2 border-b-1 border-neutral-500">
@@ -8,10 +8,10 @@ export const ListEpisode = ({ id, episodeId, activeId, time, title }) => {
           <p>{id + 1}</p>
         </div>
         <div className="md:w-auto w-[85%]">
-          <div className={`${activeId == episodeId ? "text-yellow-300" : ""} flex items-center hover:text-yellow-500 w-full`}>
+          <div className={`${activeId == episodeId ? "text-yellow-300" : "text-neutral-300"} flex items-center hover:text-yellow-500 w-full`}>
             <p className="font-semibold sm:text-base line-clamp-2 text-elipsis">{title}</p>
           </div>
-          <p className="text-sm text-neutral-500">{time}</p>
+          <p className="text-sm text-neutral-500">{releaseDate}</p>
         </div>
       </div>
     </Link>

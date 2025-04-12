@@ -9,10 +9,12 @@ import AnimeGenre from "./pages/AnimeGenre";
 import JadwalAnime from "./pages/JadwalAnime";
 import Home from "./pages/Home";
 import { AnimeOngoing } from "./pages/AnimeOngoing";
-import { AnimeCompleted } from "./pages/AnimeCompleted";
+import { AnimeMovie } from "./pages/AnimeMovie";
 import { ButtonToTop } from "./components/ButtonToTop";
 import { FavoritesProvider } from "./context/FavoritesContext";
 import { NotFound } from "./pages/NotFound";
+import { AnimeBatch } from "./pages/AnimeBatch";
+import DetailBatch from "./pages/DetailBatch";
 const App = () => {
   return (
     <FavoritesProvider>
@@ -22,11 +24,13 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/detail/:id" element={<DetailAnime />} />
+          <Route path="/batch/:id" element={<DetailBatch />} />
           <Route path="/episode/:id" element={<AnimeStreaming />} />
           <Route path="/genre/:id" element={<AnimeGenre />} />
           <Route path="/search/" element={<AnimeSearch />} />
           <Route path="/ongoing/" element={<AnimeOngoing />} />
-          <Route path="/completed/" element={<AnimeCompleted />} />
+          <Route path="/completed/" element={<AnimeMovie />} />
+          <Route path="/batch/" element={<AnimeBatch />} />
           <Route path="/daftar-anime/" element={<AnimeList />} />
           <Route path="/favorite/" element={<AnimeFavorite />} />
           <Route path="/jadwal/" element={<JadwalAnime />} />
