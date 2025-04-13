@@ -2,14 +2,15 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { dataJumbotron } from "../utils/dataJumbotron";
 import { Link } from "react-router-dom";
+import useFetch from "../services/api";
+import useStream from "../services/apiStream";
 import menheraChibi from "../assets/gif/menhera-chibi.gif";
-import { CardNewAnime } from "../components/home/CardNewAnime";
-import { CardAnimeBatch } from "../components/home/CardAnimeBatch";
 
 // component
 import { ContainerJumbotron } from "../components/home/ContainerJumbotron";
 import { CardAnime } from "../components/CardAnime";
-import useFetch from "../services/api";
+import { CardAnimeBatch } from "../components/home/CardAnimeBatch";
+import { CardNewAnime } from "../components/home/CardNewAnime";
 
 // Konfigurasi responsive
 const resJumbotron = {
@@ -34,7 +35,7 @@ const CustomDot = ({ onClick, active }) => {
 };
 
 const Home = () => {
-  const { datas, loading, error } = useFetch("/home");
+  const { animes: datas, loading, error } = useStream("/home");
   return (
     <>
       {loading ? (

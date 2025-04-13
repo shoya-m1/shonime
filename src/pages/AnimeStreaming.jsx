@@ -7,10 +7,11 @@ import { TableDownload } from "../components/animeStreaming/TableDownload";
 import { ListEpisode } from "../components/detailAnime/ListEpisode";
 import { ContainerStreaming } from "../components/animeStreaming/ContainerStreaming";
 import useFetch from "../services/api";
+import useStream from "../services/apiStream";
 
 export const AnimeStreaming = () => {
   const { id } = useParams();
-  const { datas, loading, error } = useFetch(`/episode/${id}`);
+  const { animes: datas, loading, error } = useStream(`/episode/${id}`);
   const episodes = datas?.data || [];
   const { datas: animes, loading: loadingDatas } = useFetch(`/anime/${episodes?.animeId}`);
 

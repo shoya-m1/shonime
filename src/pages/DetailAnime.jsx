@@ -5,10 +5,11 @@ import { ContainerSynopsis } from "../components/detailAnime/ConteinerSynopsis";
 import { ListEpisode } from "../components/detailAnime/ListEpisode";
 import { Link } from "react-router-dom";
 import useFetch from "../services/api";
+import useStream from "../services/apiStream";
 
 const DetailAnime = () => {
   const { id } = useParams();
-  const { datas, loading, error } = useFetch(`/anime/${id}`);
+  const { animes: datas, loading, error } = useStream(`/anime/${id}`);
   const animeData = datas?.data || [];
   const paragraf = animeData?.synopsis || "";
 
