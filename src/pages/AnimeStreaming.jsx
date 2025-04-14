@@ -11,9 +11,9 @@ import useStream from "../services/apiStream";
 
 export const AnimeStreaming = () => {
   const { id } = useParams();
-  const { animes: datas, loading, error } = useStream(`/episode/${id}`);
+  const { datas, loading, error } = useFetch(`/episode/${id}`);
   const episodes = datas?.data || [];
-  const { datas: animes, loading: loadingDatas } = useFetch(`/anime/${episodes?.animeId}`);
+  const { animes, loading: loadingDatas } = useStream(`/anime/${episodes?.animeId}`);
 
   const [selectEpisode, setSelectEpisode] = useState(false);
   const [selectResolution, setSelectResolution] = useState(true);
